@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git sin miedo · Recurso educativo digital (prototipo)</title>
+<style>
+  @page { size: 297mm 167mm; margin: 0; }
+  :root{
+    --verde:#39A900; --verde-osc:#2a7d00; --azul:#00304D; --gris:#f3f5f7; --texto:#1d2733; --suave:#5b6773;
+    --naranja:#f28c28; --rojo:#d64545;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;font-family:"Montserrat","Open Sans",Arial,sans-serif;color:var(--texto);background:#dfe5ea}
+  .page{width:297mm;height:167mm;margin:10px auto;background:#fff;position:relative;overflow:hidden;
+        page-break-after:always;break-after:page;display:flex;flex-direction:column}
+  @media print{ body{background:#fff} .page{margin:0} }
+  @media screen and (max-width:1150px){ .page{width:100%;height:auto;min-height:167mm} }
+  header.bar{display:flex;align-items:center;justify-content:space-between;background:var(--azul);color:#fff;padding:5mm 10mm;flex:0 0 auto}
+  header.bar .brand{font-weight:800;font-size:13pt;letter-spacing:.3px}
+  header.bar .brand span{color:var(--verde)}
+  header.bar nav a{color:#cfe3f0;text-decoration:none;font-size:8.5pt;margin-left:4.5mm;font-weight:600}
+  header.bar nav a.on{color:#fff;border-bottom:2px solid var(--verde);padding-bottom:1mm}
+  .body{flex:1 1 auto;padding:7mm 12mm 4mm 12mm;display:flex;gap:8mm}
+  footer.nav{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:3mm 12mm 5mm;font-size:8pt;color:var(--suave)}
+  .btn{display:inline-block;background:var(--verde);color:#fff !important;text-decoration:none;font-weight:700;font-size:9pt;padding:2.2mm 5mm;border-radius:6mm}
+  .btn.sec{background:#e7eef3;color:var(--azul) !important}
+  h1{font-size:24pt;margin:0 0 3mm;color:var(--azul);line-height:1.1}
+  h2{font-size:17pt;margin:0 0 3mm;color:var(--azul)}
+  h3{font-size:11pt;margin:0 0 1.5mm;color:var(--verde-osc)}
+  p,li{font-size:9.6pt;line-height:1.45;margin:0 0 2mm}
+  ul{margin:0 0 2mm;padding-left:5mm}
+  .col{flex:1 1 0}
+  .card{background:var(--gris);border-radius:4mm;padding:4mm 5mm;margin-bottom:3mm}
+  .card.v{border-left:2mm solid var(--verde)}
+  .card.a{border-left:2mm solid var(--azul)}
+  .card.n{border-left:2mm solid var(--naranja)}
+  code,.cmd{font-family:"DejaVu Sans Mono",Consolas,monospace;font-size:8.8pt;background:#0f1e2b;color:#b9f27c;padding:.4mm 1.5mm;border-radius:1mm}
+  pre{font-family:"DejaVu Sans Mono",Consolas,monospace;background:#0f1e2b;color:#e6edf3;font-size:8.6pt;line-height:1.5;padding:3.5mm 4.5mm;border-radius:3mm;margin:0 0 3mm;white-space:pre-wrap}
+  pre .c{color:#7d8b99} pre .g{color:#b9f27c}
+  .tag{display:inline-block;background:var(--verde);color:#fff;font-size:7.5pt;font-weight:700;padding:.8mm 2.5mm;border-radius:3mm;margin-bottom:2mm;letter-spacing:.4px}
+  table{border-collapse:collapse;width:100%;font-size:8.8pt}
+  th,td{border:1px solid #d5dde3;padding:1.8mm 2.5mm;text-align:left;vertical-align:top}
+  th{background:var(--azul);color:#fff}
+  a{color:#0b6aa8}
+  .menu{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;flex:1}
+  .menu a{display:block;text-decoration:none;color:var(--texto);background:var(--gris);border-radius:4mm;padding:4.5mm;border-top:2mm solid var(--verde)}
+  .menu a b{display:block;color:var(--azul);font-size:11pt;margin-bottom:1mm}
+  .menu a small{font-size:8.6pt;color:var(--suave);line-height:1.35;display:block}
+  .flow{display:flex;align-items:stretch;gap:2mm;margin:2mm 0 4mm}
+  .flow .z{flex:1;border-radius:3mm;padding:3mm;text-align:center;color:#fff;font-weight:700;font-size:9.5pt}
+  .flow .z small{display:block;font-weight:400;font-size:8pt;margin-top:1mm;opacity:.9}
+  .flow .ar{align-self:center;font-size:8pt;color:var(--suave);text-align:center;width:22mm}
+  .flow .ar code{display:block;margin-top:1mm}
+  .cover{background:linear-gradient(120deg,var(--azul) 0%,#004a74 60%,var(--verde-osc) 100%);color:#fff}
+  .cover h1{color:#fff;font-size:34pt} .cover .tag{align-self:flex-start}
+  .cover p{font-size:11pt;color:#dbe8f1}
+  .quiz li{margin-bottom:3mm}
+  .opt{display:block;margin-left:3mm;font-size:9.2pt}
+  .small{font-size:8.2pt;color:var(--suave)}
+  .check li{list-style:none;margin-left:-5mm}
+  .check li:before{content:"☐ ";color:var(--verde-osc);font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA ============ -->
+<section class="page cover" id="portada">
+  <div class="body" style="flex-direction:column;justify-content:center;padding:14mm 18mm">
+    <span class="tag">PROTOTIPO · RECURSO EDUCATIVO DIGITAL · v0.1</span>
+    <h1>Git sin miedo</h1>
+    <p style="font-size:14pt;color:#fff;margin-bottom:6mm">Guía interactiva para versionar y colaborar con Git y GitHub<br>Tecnólogo en Análisis y Desarrollo de Software (ADSO) · SENA</p>
+    <p>Elaborado por: <b>Juan Pablo Chamizo Vega</b> — Instructor, Centro de Comercio y Servicios, Regional Cauca<br>
+       Programa: Integración de tecnologías del aprendizaje, del conocimiento y la participación (41311595)<br>
+       Evidencia: AA3 — Prototipo de recurso educativo digital</p>
+    <div style="margin-top:6mm">
+      <a class="btn" href="#ficha">Ver ficha técnica</a>
+      <a class="btn sec" href="#inicio" style="margin-left:3mm">Entrar al recurso →</a>
+    </div>
+    <p class="small" style="color:#bcd3e2;margin-top:8mm">Documento interactivo: use los botones y el menú superior para navegar. Licencia Creative Commons BY-NC-SA 4.0.</p>
+  </div>
+</section>
+
+<!-- ============ FICHA TÉCNICA ============ -->
+<section class="page" id="ficha">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Ficha técnica del prototipo</div>
+    <nav><a href="#portada">Portada</a><a class="on" href="#ficha">Ficha</a><a href="#pruebas">Pruebas</a><a href="#inicio">Recurso</a></nav></header>
+  <div class="body">
+    <div class="col">
+      <div class="card n"><h3>Problemática identificada</h3>
+        <p>Los aprendices de ADSO de primer trimestre pierden avances de código, sobrescriben el trabajo de sus compañeros y entregan los proyectos por USB o correo, porque no comprenden el flujo de control de versiones. En el aula se observa temor a la consola y a "dañar" el repositorio, commits sin mensaje claro y repositorios sin README.</p></div>
+      <div class="card v"><h3>Intencionalidad pedagógica</h3>
+        <p>Reforzar un aprendizaje y remediar una situación desfavorable: que el aprendiz pierda el miedo a Git practicando en un entorno guiado, con ejemplos de su propio proyecto formativo.</p></div>
+      <div class="card a"><h3>Objetivo de aprendizaje</h3>
+        <p>Al finalizar, el aprendiz aplica el flujo básico de Git (init, add, commit, push, pull) y la colaboración por ramas y pull requests en GitHub para versionar el proyecto formativo de su equipo.</p></div>
+    </div>
+    <div class="col">
+      <table>
+        <tr><th style="width:32%">Elemento</th><th>Descripción</th></tr>
+        <tr><td><b>Público</b></td><td>Aprendices ADSO (16–30 años), nivel principiante, formación presencial con apoyo virtual.</td></tr>
+        <tr><td><b>Formato</b></td><td>Documento interactivo (HTML exportado a PDF) con navegación interna, enlaces externos y autoevaluación.</td></tr>
+        <tr><td><b>Método didáctico</b></td><td>Aprendizaje basado en retos con modelado: explicación breve → demostración de comandos → práctica guiada → reto en equipo → autoevaluación.</td></tr>
+        <tr><td><b>Ruta de desarrollo</b></td><td>4 módulos: 1) ¿Qué es Git?; 2) Flujo local; 3) GitHub y trabajo en equipo; 4) Reto. Cierra con autoevaluación (6 h de trabajo).</td></tr>
+        <tr><td><b>Medios</b></td><td>Texto (tipografía sans serif), imagen/diagrama (leyes Gestalt de proximidad y contraste), bloques de código y enlaces a simuladores.</td></tr>
+        <tr><td><b>Herramientas</b></td><td>HTML/CSS (editor VS Code), Google Chrome para exportar a PDF, Canva para íconos, GitHub Pages para publicar.</td></tr>
+        <tr><td><b>Normativa</b></td><td>Contenido propio; recursos externos enlazados sin copiar. Citas en APA 7. Licencia CC BY-NC-SA 4.0.</td></tr>
+      </table>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#portada">← Portada</a><span>Ficha técnica</span><a class="btn" href="#pruebas">Plan de pruebas →</a></footer>
+</section>
+
+<!-- ============ PRUEBAS ============ -->
+<section class="page" id="pruebas">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Plan de pruebas del prototipo</div>
+    <nav><a href="#portada">Portada</a><a href="#ficha">Ficha</a><a class="on" href="#pruebas">Pruebas</a><a href="#inicio">Recurso</a></nav></header>
+  <div class="body">
+    <div class="col" style="flex:1.3">
+      <p>El prototipo se valida con un grupo piloto de 5 aprendices y 1 instructor par de la Red de Informática antes de su versión final.</p>
+      <table>
+        <tr><th>Criterio</th><th>Cómo se prueba</th><th>Indicador esperado</th></tr>
+        <tr><td>Navegación</td><td>El aprendiz recorre el recurso solo con el menú y los botones.</td><td>Llega a cada módulo en ≤ 2 clics.</td></tr>
+        <tr><td>Comprensión</td><td>Autoevaluación de 5 preguntas.</td><td>≥ 4/5 aciertos en el 80 % del grupo.</td></tr>
+        <tr><td>Aplicación</td><td>Reto del módulo 4 en equipos de 3.</td><td>Repositorio con 3 ramas, 1 PR fusionado y README.</td></tr>
+        <tr><td>Legibilidad</td><td>Lectura en celular y en computador.</td><td>Texto legible sin zoom en pantallas ≥ 6".</td></tr>
+        <tr><td>Normativa</td><td>Revisión de fuentes, créditos y licencia.</td><td>100 % de recursos externos citados.</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <div class="card n"><h3>Posibles falencias detectadas en v0.1</h3>
+        <ul>
+          <li>No incluye video demostrativo: los aprendices visuales pueden necesitar ver la consola en acción.</li>
+          <li>La autoevaluación es de verificación manual; falta retroalimentación automática (migrar a Google Forms o Genially).</li>
+          <li>Comandos presentados solo para Windows (Git Bash); falta nota para macOS/Linux.</li>
+          <li>No contempla conectividad limitada: se requiere versión descargable en PDF (esta misma).</li>
+        </ul></div>
+      <div class="card v"><h3>Ajustes previstos para la versión final</h3>
+        <ul><li>Agregar video corto (2 min) por módulo.</li><li>Formulario con calificación automática.</li><li>Glosario emergente de términos.</li></ul></div>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#ficha">← Ficha</a><span>Plan de pruebas</span><a class="btn" href="#inicio">Entrar al recurso →</a></footer>
+</section>
+
+<!-- ============ INICIO / MENÚ ============ -->
+<section class="page" id="inicio">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span></div>
+    <nav><a class="on" href="#inicio">Inicio</a><a href="#m1">1. Git</a><a href="#m2">2. Flujo local</a><a href="#m3">3. GitHub</a><a href="#m4">4. Reto</a><a href="#eval">Evaluación</a><a href="#creditos">Créditos</a></nav></header>
+  <div class="body" style="flex-direction:column">
+    <div style="display:flex;gap:8mm;align-items:flex-start">
+      <div style="flex:1.4"><h2>¡Bienvenido, aprendiz!</h2>
+      <p>¿Alguna vez perdiste horas de trabajo porque alguien reemplazó tu archivo, o tuviste carpetas como <i>proyecto_final_v3_ahora_si.zip</i>? Este recurso te enseña a usar <b>Git</b> y <b>GitHub</b> para que eso no vuelva a pasar. Avanza en orden; cada módulo termina con una práctica corta.</p></div>
+      <div class="card v" style="flex:1"><h3>Lo que lograrás</h3><p>Versionar tu proyecto formativo y colaborar con tu equipo usando ramas y pull requests.</p><p class="small">Duración estimada: 6 horas · Requisitos: Git instalado y cuenta en GitHub.</p></div>
+    </div>
+    <div class="menu">
+      <a href="#m1"><b>1 · ¿Qué es Git?</b><small>Control de versiones, repositorio y por qué lo usan los equipos de desarrollo.</small></a>
+      <a href="#m2"><b>2 · Flujo local</b><small>Las tres áreas de Git y los comandos init, status, add, commit y log.</small></a>
+      <a href="#m3"><b>3 · GitHub en equipo</b><small>Repositorio remoto, clone, push, pull, ramas y pull requests.</small></a>
+      <a href="#m4"><b>4 · Reto en equipo</b><small>Aplica todo en el repositorio de tu proyecto formativo.</small></a>
+      <a href="#eval"><b>Autoevaluación</b><small>5 preguntas para comprobar lo aprendido, con respuestas comentadas.</small></a>
+      <a href="#creditos"><b>Créditos y fuentes</b><small>Referencias APA, licencia y recursos para seguir aprendiendo.</small></a>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#portada">← Portada</a><span>Inicio</span><a class="btn" href="#m1">Comenzar →</a></footer>
+</section>
+
+<!-- ============ MÓDULO 1 ============ -->
+<section class="page" id="m1">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Módulo 1</div>
+    <nav><a href="#inicio">Inicio</a><a class="on" href="#m1">1. Git</a><a href="#m2">2. Flujo local</a><a href="#m3">3. GitHub</a><a href="#m4">4. Reto</a><a href="#eval">Evaluación</a></nav></header>
+  <div class="body">
+    <div class="col">
+      <span class="tag">MÓDULO 1</span><h2>¿Qué es Git y por qué usarlo?</h2>
+      <p><b>Git</b> es un sistema de control de versiones distribuido: guarda "fotografías" (commits) del estado de tu proyecto para que puedas volver atrás, ver quién cambió qué y trabajar en paralelo con otras personas sin pisarse.</p>
+      <p><b>GitHub</b> es una plataforma en la nube que aloja repositorios Git y agrega herramientas de colaboración: issues, pull requests, revisión de código y publicación de sitios (GitHub Pages).</p>
+      <div class="card a"><h3>Git ≠ GitHub</h3><p>Git es la herramienta que instalas en tu computador. GitHub es el "lugar" en internet donde compartes tus repositorios. Puedes usar Git sin GitHub, pero no al revés.</p></div>
+    </div>
+    <div class="col">
+      <div class="card v"><h3>Conceptos clave</h3>
+        <ul>
+          <li><b>Repositorio:</b> carpeta del proyecto con su historial de cambios.</li>
+          <li><b>Commit:</b> punto guardado con un mensaje que explica el cambio.</li>
+          <li><b>Rama (branch):</b> línea de trabajo paralela para una funcionalidad.</li>
+          <li><b>Remoto:</b> copia del repositorio en GitHub (<code>origin</code>).</li>
+        </ul></div>
+      <div class="card n"><h3>Práctica 1 (10 min)</h3>
+        <p>Instala Git desde <a href="https://git-scm.com/downloads">git-scm.com/downloads</a> y configura tu identidad:</p>
+        <pre><span class="g">git config --global user.name</span> "Tu Nombre"
+<span class="g">git config --global user.email</span> "tu_correo@soy.sena.edu.co"
+<span class="g">git --version</span>   <span class="c"># comprueba la instalación</span></pre></div>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#inicio">← Inicio</a><span>Módulo 1 de 4</span><a class="btn" href="#m2">Módulo 2 →</a></footer>
+</section>
+
+<!-- ============ MÓDULO 2 ============ -->
+<section class="page" id="m2">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Módulo 2</div>
+    <nav><a href="#inicio">Inicio</a><a href="#m1">1. Git</a><a class="on" href="#m2">2. Flujo local</a><a href="#m3">3. GitHub</a><a href="#m4">4. Reto</a><a href="#eval">Evaluación</a></nav></header>
+  <div class="body" style="flex-direction:column">
+    <div><span class="tag">MÓDULO 2</span><h2>El flujo local: las tres áreas de Git</h2></div>
+    <div class="flow">
+      <div class="z" style="background:#5b6773">Directorio de trabajo<small>Archivos que editas</small></div>
+      <div class="ar">prepara<code>git add</code></div>
+      <div class="z" style="background:var(--naranja)">Área de preparación<small>(staging) lo que irá en el commit</small></div>
+      <div class="ar">guarda<code>git commit</code></div>
+      <div class="z" style="background:var(--verde-osc)">Repositorio local<small>Historial de commits</small></div>
+      <div class="ar">comparte<code>git push</code></div>
+      <div class="z" style="background:var(--azul)">GitHub (remoto)<small>Copia en la nube</small></div>
+    </div>
+    <div style="display:flex;gap:8mm">
+      <div class="col"><pre><span class="g">git init</span>                 <span class="c"># convierte la carpeta en repositorio</span>
+<span class="g">git status</span>               <span class="c"># ¿qué cambió?</span>
+<span class="g">git add index.html</span>       <span class="c"># prepara un archivo (o: git add .)</span>
+<span class="g">git commit -m</span> "feat: agrega página de inicio"
+<span class="g">git log --oneline</span>        <span class="c"># ver historial</span></pre></div>
+      <div class="col"><div class="card v"><h3>Buenas prácticas de commit</h3>
+        <ul><li>Un commit = un cambio con sentido.</li><li>Mensaje en presente y claro: <code>fix: corrige validación del login</code>.</li><li>Haz <code>git status</code> antes de cada <code>add</code>.</li><li>No subas contraseñas ni la carpeta <code>node_modules</code>: usa <code>.gitignore</code>.</li></ul>
+        <p class="small">Practica visualmente en <a href="https://learngitbranching.js.org/?locale=es_ES">Learn Git Branching</a>.</p></div></div>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#m1">← Módulo 1</a><span>Módulo 2 de 4</span><a class="btn" href="#m3">Módulo 3 →</a></footer>
+</section>
+
+<!-- ============ MÓDULO 3 ============ -->
+<section class="page" id="m3">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Módulo 3</div>
+    <nav><a href="#inicio">Inicio</a><a href="#m1">1. Git</a><a href="#m2">2. Flujo local</a><a class="on" href="#m3">3. GitHub</a><a href="#m4">4. Reto</a><a href="#eval">Evaluación</a></nav></header>
+  <div class="body">
+    <div class="col">
+      <span class="tag">MÓDULO 3</span><h2>GitHub y el trabajo en equipo</h2>
+      <p>Cuando varias personas trabajan en el mismo proyecto, nadie edita directamente la rama <code>main</code>. Cada integrante crea su <b>rama</b>, sube sus cambios y propone integrarlos con un <b>pull request (PR)</b> que otro compañero revisa.</p>
+      <pre><span class="g">git clone</span> https://github.com/equipo/proyecto.git
+<span class="g">git switch -c</span> feature/formulario-registro
+<span class="c"># ... editas, add, commit ...</span>
+<span class="g">git push -u origin</span> feature/formulario-registro
+<span class="c"># En GitHub: Compare &amp; pull request → revisión → Merge</span>
+<span class="g">git switch</span> main
+<span class="g">git pull</span>                 <span class="c"># trae lo último del equipo</span></pre>
+    </div>
+    <div class="col">
+      <div class="card a"><h3>Roles sugeridos en el equipo</h3>
+        <table><tr><th>Rol</th><th>Responsabilidad</th></tr>
+          <tr><td>Líder de repositorio</td><td>Crea el repo, protege <code>main</code>, invita colaboradores.</td></tr>
+          <tr><td>Desarrollador(a)</td><td>Trabaja en su rama y abre PR.</td></tr>
+          <tr><td>Revisor(a)</td><td>Comenta y aprueba el PR antes del merge.</td></tr></table>
+        <p class="small" style="margin-top:2mm">Los roles rotan en cada sprint.</p></div>
+      <div class="card n"><h3>¿Y si hay conflicto?</h3><p>Git marca las líneas con <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> y <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. Conversa con tu compañero, deja la versión correcta, borra las marcas y haz un nuevo commit. ¡No es un error, es parte del trabajo en equipo!</p></div>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#m2">← Módulo 2</a><span>Módulo 3 de 4</span><a class="btn" href="#m4">Módulo 4 →</a></footer>
+</section>
+
+<!-- ============ MÓDULO 4 ============ -->
+<section class="page" id="m4">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Módulo 4</div>
+    <nav><a href="#inicio">Inicio</a><a href="#m1">1. Git</a><a href="#m2">2. Flujo local</a><a href="#m3">3. GitHub</a><a class="on" href="#m4">4. Reto</a><a href="#eval">Evaluación</a></nav></header>
+  <div class="body">
+    <div class="col" style="flex:1.2">
+      <span class="tag">MÓDULO 4 · RETO EN EQUIPO (3 personas)</span><h2>Reto: "Nuestro proyecto, una sola versión"</h2>
+      <p><b>Situación:</b> su equipo debe entregar la primera versión del sitio web del proyecto formativo. Hasta ahora cada uno tiene archivos sueltos en su computador.</p>
+      <ol style="padding-left:5mm">
+        <li><p>El líder crea el repositorio en GitHub con README y <code>.gitignore</code>, e invita a los otros dos.</p></li>
+        <li><p>Cada integrante clona el repositorio y crea su rama: <code>feature/inicio</code>, <code>feature/contacto</code>, <code>feature/estilos</code>.</p></li>
+        <li><p>Cada uno hace al menos 3 commits con mensajes claros y sube su rama.</p></li>
+        <li><p>Abren 3 pull requests; cada PR debe ser revisado y comentado por otro integrante antes del merge.</p></li>
+        <li><p>Actualizan el README con el nombre del proyecto, integrantes y cómo ejecutarlo.</p></li>
+      </ol>
+    </div>
+    <div class="col">
+      <div class="card v"><h3>Lista de chequeo de la entrega</h3>
+        <ul class="check"><li>Repositorio público con README completo.</li><li>3 ramas creadas, una por integrante.</li><li>Mínimo 9 commits con mensajes descriptivos.</li><li>3 PR revisados y fusionados en <code>main</code>.</li><li>Sin archivos sensibles ni dependencias subidas.</li></ul></div>
+      <div class="card a"><h3>Entrega</h3><p>Copien el enlace del repositorio en la actividad de Territorium. El instructor revisará el historial con <code>git log --graph</code>.</p></div>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#m3">← Módulo 3</a><span>Módulo 4 de 4</span><a class="btn" href="#eval">Autoevaluación →</a></footer>
+</section>
+
+<!-- ============ EVALUACIÓN ============ -->
+<section class="page" id="eval">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Autoevaluación</div>
+    <nav><a href="#inicio">Inicio</a><a href="#m4">4. Reto</a><a class="on" href="#eval">Evaluación</a><a href="#respuestas">Respuestas</a></nav></header>
+  <div class="body">
+    <ol class="quiz col" style="padding-left:5mm">
+      <li><p><b>¿Qué comando lleva los cambios del directorio de trabajo al área de preparación?</b></p>
+        <span class="opt">a) git commit &nbsp; b) git add &nbsp; c) git push &nbsp; d) git init</span></li>
+      <li><p><b>¿Cuál es la diferencia principal entre Git y GitHub?</b></p>
+        <span class="opt">a) Son lo mismo &nbsp; b) Git es local y GitHub aloja repositorios en la nube &nbsp; c) GitHub es un lenguaje</span></li>
+      <li><p><b>¿Cuál es el mejor mensaje de commit?</b></p>
+        <span class="opt">a) "cambios" &nbsp; b) "aaa" &nbsp; c) "feat: agrega validación al formulario de registro"</span></li>
+    </ol>
+    <ol class="quiz col" start="4" style="padding-left:5mm">
+      <li><p><b>En un equipo, ¿dónde se debe desarrollar una nueva funcionalidad?</b></p>
+        <span class="opt">a) Directamente en main &nbsp; b) En una rama propia y luego PR &nbsp; c) En una carpeta copiada</span></li>
+      <li><p><b>Aparecen marcas &lt;&lt;&lt;&lt;&lt;&lt;&lt; en un archivo después de un pull. ¿Qué pasó?</b></p>
+        <span class="opt">a) Se dañó el repositorio &nbsp; b) Hay un conflicto que debo resolver y confirmar con un commit &nbsp; c) GitHub borró el archivo</span></li>
+      <div class="card v" style="margin-top:4mm"><p><b>Autoevalúate:</b> escribe tus respuestas y compáralas. 5/5 ¡excelente!; 3–4 repasa el módulo indicado; menos de 3, vuelve a realizar los módulos 2 y 3.</p>
+      <a class="btn" href="#respuestas">Ver respuestas comentadas →</a></div>
+    </ol>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#m4">← Módulo 4</a><span>Autoevaluación</span><a class="btn" href="#respuestas">Respuestas →</a></footer>
+</section>
+
+<!-- ============ RESPUESTAS ============ -->
+<section class="page" id="respuestas">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Respuestas comentadas</div>
+    <nav><a href="#inicio">Inicio</a><a href="#eval">Evaluación</a><a class="on" href="#respuestas">Respuestas</a><a href="#creditos">Créditos</a></nav></header>
+  <div class="body">
+    <div class="col">
+      <div class="card v"><h3>1 → b) git add</h3><p>Prepara los cambios para el siguiente commit. <a href="#m2">Repasar módulo 2</a></p></div>
+      <div class="card v"><h3>2 → b)</h3><p>Git funciona en tu equipo; GitHub aloja repositorios y facilita la colaboración. <a href="#m1">Repasar módulo 1</a></p></div>
+      <div class="card v"><h3>3 → c)</h3><p>Indica el tipo de cambio y qué se hizo; tu equipo lo entiende sin abrir el código. <a href="#m2">Repasar módulo 2</a></p></div>
+    </div>
+    <div class="col">
+      <div class="card v"><h3>4 → b)</h3><p>Las ramas aíslan el trabajo y el PR permite revisar antes de integrar a <code>main</code>. <a href="#m3">Repasar módulo 3</a></p></div>
+      <div class="card v"><h3>5 → b)</h3><p>Es un conflicto de fusión: se elige el contenido correcto, se borran las marcas y se hace commit. <a href="#m3">Repasar módulo 3</a></p></div>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#eval">← Evaluación</a><span>Respuestas</span><a class="btn" href="#creditos">Créditos →</a></footer>
+</section>
+
+<!-- ============ CRÉDITOS ============ -->
+<section class="page" id="creditos">
+  <header class="bar"><div class="brand">Git <span>sin miedo</span> · Créditos y fuentes</div>
+    <nav><a href="#inicio">Inicio</a><a href="#eval">Evaluación</a><a class="on" href="#creditos">Créditos</a><a href="#portada">Portada</a></nav></header>
+  <div class="body">
+    <div class="col" style="flex:1.4">
+      <h3>Referencias (APA 7)</h3>
+      <p>Chacon, S., y Straub, B. (2014). <i>Pro Git</i> (2.ª ed.). Apress. https://git-scm.com/book/es/v2</p>
+      <p>GitHub. (s.f.). <i>Documentación de GitHub</i>. https://docs.github.com/es</p>
+      <p>Learn Git Branching. (s.f.). <i>Aprende a ramificar en Git</i>. https://learngitbranching.js.org/?locale=es_ES</p>
+      <p>Conventional Commits. (s.f.). <i>Conventional Commits 1.0.0</i>. https://www.conventionalcommits.org/es/v1.0.0/</p>
+      <p>Zapata, M. (2012). <i>Recursos educativos digitales: conceptos básicos</i>. Universidad de Antioquia.</p>
+      <p>SENA. (2020). <i>Producción de contenidos digitales</i> [Componente formativo]. Programa Integración de tecnologías del aprendizaje, del conocimiento y la participación.</p>
+    </div>
+    <div class="col">
+      <div class="card a"><h3>Autoría</h3><p>Diseño, contenido y diagramas: Juan Pablo Chamizo Vega, instructor SENA, Centro de Comercio y Servicios, Regional Cauca (2026).</p></div>
+      <div class="card v"><h3>Licencia</h3><p>Este recurso se comparte bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Creative Commons BY-NC-SA 4.0</a>: puede copiarse y adaptarse citando al autor, sin fines comerciales y con la misma licencia.</p>
+      <p class="small">Los sitios externos se enlazan, no se reproducen, respetando sus derechos de autor.</p></div>
+    </div>
+  </div>
+  <footer class="nav"><a class="btn sec" href="#respuestas">← Respuestas</a><span>Fin del recurso</span><a class="btn" href="#portada">Volver a la portada</a></footer>
+</section>
+
+</body>
+</html>
